@@ -1,0 +1,53 @@
+#include <stdio.h>
+//Function Declaration
+void promptForCode();
+void handleIncorrectCode();
+int askToResetPassword();
+int verifySecurityQuestion();
+
+int main(){
+    //Function Call
+    promptForCode();
+    return 0;
+}
+//Function to prompt the user to enter the code
+void promptForCode(){
+    int doorcode = 1;
+    int enteredCode;
+    printf("Hello! Please enter the code: ");
+    scanf("%d", &enteredCode);
+  
+    if (enteredCode == doorcode){
+        printf("The code is CORRECT! Welcome!\n");
+    }else{
+        handleIncorrectCode();
+    }
+}
+//Function to handle the scenario where the entered code is incorrect
+void handleIncorrectCode(){
+    printf("The code is INCORRECT!\n");
+
+    if (askToResetPassword()){
+        if (verifySecurityQuestion()){
+            printf("A reset password email has been sent.\n");
+        }else{
+            printf("Wrong answer. Password reset denied.\n");
+        }
+    }else{
+        printf("Try again later.\n");
+    }
+}
+//Function to ask the user if they want to reset the password
+int askToResetPassword(){
+    int resetOption;
+    printf("Do you want to reset the password? ENTER 1 for yes and 0 for no: ");
+    scanf("%d", &resetOption);
+    return resetOption;
+}
+//Function to verify the answer to the security question
+int verifySecurityQuestion(){
+    int securityAnswer;
+    printf("First, answer this security question: Is green your favorite color? ENTER 1 for yes and 0 for no: ");
+    scanf("%d", &securityAnswer);
+    return securityAnswer;
+}
