@@ -1,3 +1,5 @@
+//Code for Dook Lock System
+
 #include <stdio.h>
 //Function Declaration
 void promptForCode();
